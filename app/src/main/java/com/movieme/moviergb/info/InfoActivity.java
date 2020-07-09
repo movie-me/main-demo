@@ -38,21 +38,23 @@ public class InfoActivity extends AppCompatActivity {
         String movieCode = intent.getExtras().getString("movieCode");
         Log.d("[InfoActivity][movieCd]", movieCode);
 
-        String mMovieName = intent.getStringExtra("iMovieNm");
-        String mOpenDate = intent.getStringExtra("iOpenDt");
-        String mNation = intent.getStringExtra("iNationAlt");
-        String mGenre = intent.getStringExtra("iGenreAlt");
-        String mTypeName = intent.getStringExtra("iTypeNm");
+        String showTm = intent.getStringExtra("showTm");
+//        String mOpenDate = intent.getStringExtra("iOpenDt");
+//        String mNation = intent.getStringExtra("iNationAlt");
+//        String mGenre = intent.getStringExtra("iGenreAlt");
+//        String mTypeName = intent.getStringExtra("iTypeNm");
         String mMovieCode = intent.getStringExtra("iMovieCd");
 
-        actionBar.setTitle(mMovieName);
+        Log.d("[InfoActivity][showTm]", showTm);
 
-        mMovieNameTv.setText(mMovieName);
-        mOpenDateTv.setText(mOpenDate);
-        mNationTv.setText(mNation);
-        mGenreTv.setText(mGenre);
-        mTypeNameTv.setText(mTypeName);
-        mMovieCodeTv.setText(mMovieCode);
+        actionBar.setTitle(showTm);
+
+        mMovieNameTv.setText(showTm);
+//        mOpenDateTv.setText(mOpenDate);
+//        mNationTv.setText(mNation);
+//        mGenreTv.setText(mGenre);
+//        mTypeNameTv.setText(mTypeName);
+//        mMovieCodeTv.setText(mMovieCode);
 
         //주석 처리한 부분으로 InfoActivity 내용 수정 가능
         //mShowTmTv.setText("180");

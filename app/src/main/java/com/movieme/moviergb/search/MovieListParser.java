@@ -30,9 +30,9 @@ public class MovieListParser extends AsyncTask<Void, Void, Void> {
     Movie movie;
     ArrayList<Movie> items = new ArrayList<>();
 
+    // 생성자
     public MovieListParser() {
     }
-
     public MovieListParser(String keyword) {
         this.keyword = keyword;
         this.items = items;
@@ -50,23 +50,21 @@ public class MovieListParser extends AsyncTask<Void, Void, Void> {
             // 실제 sax 형태로 데이터를 파싱하는 객체 선언
             XmlPullParser xpp = factory.newPullParser();
 
-            // 웹사이트에 접속
+            // 웹 사이트에 접속
             url = new URL(getSearchMovieList() + "?key=" + getApiKey() + "&movieNm=" + keyword);
 
             Log.d("[URL]", String.valueOf(url));
-            //웹사이트를 통해서 읽어드린 xml문서를 안드로이드에 저장
+
+            // 웹 사이트를 통해서 읽어드린 XML 문서를 안드로이드에 저장
             InputStream in = url.openStream();
 
-            //xml문서를 일고 파싱하는 객체에 넘겨줌
-            xpp.setInput(in, "UTF-8"); // xml문서의 인코딩 정확히 지정
+            // XML 문서를 읽고 파싱하는 객체에 넘겨주면서 인코딩 UTF-8 지정
+            xpp.setInput(in, "UTF-8");
 
-            //item 태그 안이라면
-            boolean isInItemTag = false;
-
-            //이벤트 타입을 얻어옴
+            // 이벤트 타입을 얻어옴
             int eventType = xpp.getEventType();
 
-            //문서의 끝까지 읽어 드리면서 title과 descripton을 추출해냄
+            // traversing 하면서 필요한 정보 추출
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 switch (eventType) {
                     case XmlPullParser.START_DOCUMENT:
@@ -98,14 +96,17 @@ public class MovieListParser extends AsyncTask<Void, Void, Void> {
                             movie.setGenreAlt(xpp.getText());
                         }
                         break;
+
                     case XmlPullParser.TEXT:
                         break;
+
                     case XmlPullParser.END_TAG:
                         tagName = xpp.getName();
                         if (tagName.equals("movie")) {
                             items.add(movie);
                         }
                         break;
+
                     case XmlPullParser.END_DOCUMENT:
                         // Log.d("[MovieList][END_DOC]", "End document");
                         break;
