@@ -9,45 +9,60 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="36dp"
         android:src="@drawable/ic_title" />
 
-    <EditText
-        android:id="@+id/editText"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="50dp"
-        android:background="@drawable/round"
-        android:ems="10"
-        android:hint="찾고자 하는 영화 제목을 입력하세요"
-        android:paddingLeft="15dp"
-        android:textSize="18sp" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/button"
+        <EditText
+            android:id="@+id/search_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="50dp"
+            android:layout_toStartOf="@+id/search_btn"
+            android:background="@drawable/round"
+            android:ems="10"
+            android:hint="찾고자 하는 영화 제목을 입력하세요"
+            android:paddingLeft="15dp"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:background="@android:color/holo_purple"
+            android:onClick="clickBtn"
+            android:text="검색"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="clickBtn"
-        android:text="검색"
-        android:textSize="18sp" />
+        android:paddingTop="150dp"
+        android:text="남들이 싫어한다고 자기가 좋아하는걸\n 숨기고 사는 것도 바보 같다고 생각해요."
+        android:textAlignment="center"
+        android:textSize="16sp" />
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:paddingTop="150dp"-->
-<!--        android:text="남들이 싫어한다고 자기가 좋아하는걸\n 숨기고 사는 것도 바보 같다고 생각해요."-->
-<!--        android:textAlignment="center"-->
-<!--        android:textSize="16sp" />-->
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:paddingTop="15dp"-->
-<!--        android:text="- 족구왕(2013)"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textSize="16sp" />-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:text="- 족구왕(2013)"
+        android:textAlignment="center"
+        android:textSize="16sp" />
 
 </LinearLayout>
