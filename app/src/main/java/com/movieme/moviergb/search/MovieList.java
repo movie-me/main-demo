@@ -3,7 +3,7 @@ package com.movieme.moviergb.search;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.movieme.moviergb.Movie;
+import com.movieme.moviergb.model.Movie;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -16,11 +16,10 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import static com.movieme.moviergb.api.Kobis.getApiKey;
+import static com.movieme.moviergb.api.Kobis.getSearchMovieList;
 
 public class MovieList extends AsyncTask<Void, Void, Void> {
 
-    // Context Path 설정
-    private String SEARCH_MOVIE_LIST = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.xml";
 
     String keyword;
     String tagName;
@@ -41,13 +40,11 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
     ArrayList<Movie> items = new ArrayList<>();
 
     public MovieList() {
-
     }
 
     public MovieList(String keyword) {
         this.keyword = keyword;
         this.items = items;
-//        this.flag = flag;
     }
 
     @Override
@@ -63,7 +60,7 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
             XmlPullParser xpp = factory.newPullParser();
 
             // 웹사이트에 접속
-            url = new URL(SEARCH_MOVIE_LIST + "?key=" + getApiKey() + "&movieNm=" + keyword);
+            url = new URL(getSearchMovieList() + "?key=" + getApiKey() + "&movieNm=" + keyword);
 
             Log.d("[URL]", String.valueOf(url));
             //웹사이트를 통해서 읽어드린 xml문서를 안드로이드에 저장
@@ -124,11 +121,10 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
                         }
                         break;
                 }
-
+                // 다음 단위 읽기
                 eventType = xpp.next();
             }
-            // 모든 데이터가 저장되었다면,
-//            flag = true; // true : 지정된 xml파일을 읽고 필요한 데이터를 추출해서 저장 완료된 상태
+
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {

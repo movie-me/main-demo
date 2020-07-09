@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.movieme.moviergb.Movie;
+import com.movieme.moviergb.model.Movie;
 import com.movieme.moviergb.R;
 
 import java.util.ArrayList;

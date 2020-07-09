@@ -1,4 +1,4 @@
-package com.movieme.moviergb;
+package com.movieme.moviergb.model;
 
 public class Movie {
 

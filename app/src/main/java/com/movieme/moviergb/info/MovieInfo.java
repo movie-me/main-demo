@@ -1,4 +1,4 @@
-package com.movieme.moviergb;
+package com.movieme.moviergb.info;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -14,12 +14,9 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import static com.movieme.moviergb.api.Kobis.getApiKey;
+import static com.movieme.moviergb.api.Kobis.getSearchMovieInfo;
 
 public class MovieInfo extends AsyncTask<Void, Void, Void> {
-
-    // Context Path 설정
-    private String CONTEXT_PATH = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie";
-    private String SEARCH_MOVIE_INFO = "/searchMovieInfo.xml";
 
     String movieCode = null;
     String tagName;
@@ -37,8 +34,8 @@ public class MovieInfo extends AsyncTask<Void, Void, Void> {
     // xml에서 읽어드려서 저장할 변수
     String movieNm = "";
 
-    MovieDetail movieDetail;
-    ArrayList<MovieDetail> items = new ArrayList<>();
+    com.movieme.moviergb.model.MovieInfo movieInfo;
+    ArrayList<com.movieme.moviergb.model.MovieInfo> items = new ArrayList<>();
 
     public MovieInfo() {
 
@@ -63,7 +60,7 @@ public class MovieInfo extends AsyncTask<Void, Void, Void> {
             XmlPullParser xpp = factory.newPullParser();
 
             // 웹사이트에 접속
-            url = new URL(CONTEXT_PATH + SEARCH_MOVIE_INFO + "?key=" + getApiKey() + "&movieCd=" + movieCode);
+            url = new URL(getSearchMovieInfo() + "?key=" + getApiKey() + "&movieCd=" + movieCode);
 
             Log.d("[URL]", String.valueOf(url));
             //웹사이트를 통해서 읽어드린 xml문서를 안드로이드에 저장
@@ -92,7 +89,7 @@ public class MovieInfo extends AsyncTask<Void, Void, Void> {
                         tagName = xpp.getName();
                         if (tagName.equals("movieInfo")) {
                             // 영화 객체 생성
-                            movieDetail = new MovieDetail();
+                            movieInfo = new com.movieme.moviergb.model.MovieInfo();
                         } else if (tagName.equals("movieCd")) {
                             eventType = xpp.next();
 //                            movieDetail.setMovieCd(xpp.getText());
@@ -120,7 +117,7 @@ public class MovieInfo extends AsyncTask<Void, Void, Void> {
                     case XmlPullParser.END_TAG:
                         tagName = xpp.getName();
                         if (tagName.equals("movie")) {
-                            items.add(movieDetail);
+                            items.add(movieInfo);
                         }
                         break;
                 }

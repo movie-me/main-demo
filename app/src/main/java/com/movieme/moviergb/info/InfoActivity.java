@@ -1,13 +1,15 @@
-package com.movieme.moviergb;
+package com.movieme.moviergb.info;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+
+import com.movieme.moviergb.R;
+import com.movieme.moviergb.info.MovieInfo;
 
 public class InfoActivity extends AppCompatActivity {
 

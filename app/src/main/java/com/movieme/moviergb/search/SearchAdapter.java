@@ -9,10 +9,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.movieme.moviergb.InfoActivity;
-import com.movieme.moviergb.ItemClickListener;
-import com.movieme.moviergb.Movie;
-import com.movieme.moviergb.MovieInfo;
+import com.movieme.moviergb.info.InfoActivity;
+import com.movieme.moviergb.model.Movie;
+import com.movieme.moviergb.info.MovieInfo;
 import com.movieme.moviergb.R;
 
 import java.util.ArrayList;

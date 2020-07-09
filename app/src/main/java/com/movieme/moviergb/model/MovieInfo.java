@@ -1,5 +1,5 @@
-package com.movieme.moviergb;
+package com.movieme.moviergb.model;
 
-public class MovieDetail {
+public class MovieInfo {
     private String movieNm, openDt, nationAlt, genreAlt, typeNm, movieCd;
 }
