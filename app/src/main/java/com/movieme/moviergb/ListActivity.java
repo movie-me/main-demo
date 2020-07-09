@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
 
+    static final String API_KEY = "84860e7bae0b07af4c7c7ff379be1997";
     public static final int LOAD_SUCCESS = 101;
 
     RecyclerView mRecyclerView;
@@ -53,31 +54,6 @@ public class ListActivity extends AppCompatActivity {
 
         mAdapter = new SearchAdapter(this, mMovies);
         mRecyclerView.setAdapter(mAdapter);
-
-    }
-
-    private ArrayList<Movie> getMyList() {
-        ArrayList<Movie> movies = new ArrayList<>();
-
-        Movie m = new Movie();
-        m.setMovieNm("아쿠아맨");
-        m.setNationAlt("미국");
-        m.setOpenDt("2018-12-19");
-        m.setGenreAlt("판타지");
-        m.setTypeNm("장편");
-        m.setMovieCd("20180290");
-        movies.add(m);
-
-        m = new Movie();
-        m.setMovieNm("보헤미안랩소디");
-        m.setNationAlt("미국");
-        m.setOpenDt("2018-10-31");
-        m.setGenreAlt("감동");
-        m.setTypeNm("장편");
-        m.setMovieCd("20185485");
-        movies.add(m);
-
-        return movies;
     }
 
 }
