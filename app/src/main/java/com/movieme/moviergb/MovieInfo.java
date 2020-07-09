@@ -13,13 +13,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import static com.movieme.moviergb.ListActivity.API_KEY;
+
 public class MovieInfo extends AsyncTask<Void, Void, Void> {
 
     // Context Path 설정
     private String CONTEXT_PATH = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie";
     private String SEARCH_MOVIE_INFO = "/searchMovieInfo.xml";
 
-    String keyword;
+    String movieCode = null;
     String tagName;
     StringBuffer buffer = null;
 
@@ -35,15 +37,15 @@ public class MovieInfo extends AsyncTask<Void, Void, Void> {
     // xml에서 읽어드려서 저장할 변수
     String movieNm = "";
 
-    Movie movie;
-    ArrayList<Movie> items = new ArrayList<Movie>();
+    MovieDetail movieDetail;
+    ArrayList<MovieDetail> items = new ArrayList<>();
 
     public MovieInfo() {
 
     }
 
-    public MovieInfo(String code) {
-        this.keyword = keyword;
+    public MovieInfo(String movieCode) {
+        this.movieCode = movieCode;
         this.items = items;
         this.flag = flag;
     }
@@ -61,7 +63,7 @@ public class MovieInfo extends AsyncTask<Void, Void, Void> {
             XmlPullParser xpp = factory.newPullParser();
 
             // 웹사이트에 접속
-            url = new URL(CONTEXT_PATH + SEARCH_MOVIE_INFO + "?key=84860e7bae0b07af4c7c7ff379be1997" + "&movieCd=" + "20124079");
+            url = new URL(CONTEXT_PATH + SEARCH_MOVIE_INFO + "?key=" + API_KEY + "&movieCd=" + movieCode);
 
             Log.d("[URL]", String.valueOf(url));
             //웹사이트를 통해서 읽어드린 xml문서를 안드로이드에 저장
@@ -88,27 +90,27 @@ public class MovieInfo extends AsyncTask<Void, Void, Void> {
                     case XmlPullParser.START_TAG:
                         // 태그명 읽기
                         tagName = xpp.getName();
-                        if (tagName.equals("movie")) {
+                        if (tagName.equals("movieInfo")) {
                             // 영화 객체 생성
-                            movie = new Movie();
+                            movieDetail = new MovieDetail();
                         } else if (tagName.equals("movieCd")) {
                             eventType = xpp.next();
-                            movie.setMovieCd(xpp.getText());
+//                            movieDetail.setMovieCd(xpp.getText());
                         } else if (tagName.equals("movieNm")) {
                             eventType = xpp.next();
-                            movie.setMovieNm(xpp.getText());
+//                            movieDetail.setMovieNm(xpp.getText());
                         } else if (tagName.equals("openDt")) {
                             eventType = xpp.next();
-                            movie.setOpenDt(xpp.getText());
+//                            movieDetail.setOpenDt(xpp.getText());
                         } else if (tagName.equals("typeNm")) {
                             eventType = xpp.next();
-                            movie.setTypeNm(xpp.getText());
+//                            movieDetail.setTypeNm(xpp.getText());
                         } else if (tagName.equals("nationAlt")) {
                             eventType = xpp.next();
-                            movie.setNationAlt(xpp.getText());
+//                            movieDetail.setNationAlt(xpp.getText());
                         } else if (tagName.equals("genreAlt")) {
                             eventType = xpp.next();
-                            movie.setGenreAlt(xpp.getText());
+//                            movieDetail.setGenreAlt(xpp.getText());
                         }
                         break;
 
@@ -118,7 +120,7 @@ public class MovieInfo extends AsyncTask<Void, Void, Void> {
                     case XmlPullParser.END_TAG:
                         tagName = xpp.getName();
                         if (tagName.equals("movie")) {
-                            items.add(movie);
+                            items.add(movieDetail);
                         }
                         break;
                 }

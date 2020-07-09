@@ -15,10 +15,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
 
     Context context;
     private ArrayList<Movie> movies = null;
+    MovieInfo movieInfo;
 
-    public SearchAdapter(Context context, ArrayList<Movie> list) {
+    public SearchAdapter(Context context, ArrayList<Movie> movies) {
         this.context = context;
-        this.movies = list;
+        this.movies = movies;
     }
 
     @NonNull
@@ -40,7 +41,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
-            public void onItemClickListener(View v, int position) {
+            public void onItemClickListener(SearchViewHolder searchViewHolder, View v, int position) {
                 String gMovieNm = movies.get(position).getMovieNm();
                 String gOpenDt = movies.get(position).getOpenDt();
                 String gNationAlt = movies.get(position).getNationAlt();
@@ -54,7 +55,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
                 intent.putExtra("iNationAlt", gNationAlt);
                 intent.putExtra("iGenreAlt", gGenreAlt);
                 intent.putExtra("iTypeNm", gTypeNm);
-                intent.putExtra("iMovieCd", gMovieCd);
+                intent.putExtra("movieCode", gMovieCd);
+
+                movieInfo = new MovieInfo(gMovieCd);
+                movieInfo.execute(null, null, null);
 
                 context.startActivity(intent);
             }
