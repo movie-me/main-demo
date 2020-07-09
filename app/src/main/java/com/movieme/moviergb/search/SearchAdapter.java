@@ -2,6 +2,7 @@ package com.movieme.moviergb.search;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.movieme.moviergb.info.InfoActivity;
 import com.movieme.moviergb.info.MovieInfoParser;
 import com.movieme.moviergb.model.Movie;
 import com.movieme.moviergb.R;
+import com.movieme.moviergb.model.MovieInfo;
 
 import java.util.ArrayList;
 
@@ -20,6 +22,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
 
     Context context;
     private ArrayList<Movie> movies = null;
+    private MovieInfo mMovieInfo = null;
     MovieInfoParser movieInfoParser;
 
     public SearchAdapter(Context context, ArrayList<Movie> movies) {
@@ -47,25 +50,31 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClickListener(SearchViewHolder searchViewHolder, View v, int position) {
-                String gMovieNm = movies.get(position).getMovieNm();
-                String gOpenDt = movies.get(position).getOpenDt();
-                String gNationAlt = movies.get(position).getNationAlt();
-                String gGenreAlt = movies.get(position).getGenreAlt();
-                String gTypeNm = movies.get(position).getTypeNm();
                 String gMovieCd = movies.get(position).getMovieCd();
-
-                Intent intent = new Intent(context, InfoActivity.class);
-                intent.putExtra("iMovieNm", gMovieNm);
-                intent.putExtra("iOpenDt", gOpenDt);
-                intent.putExtra("iNationAlt", gNationAlt);
-                intent.putExtra("iGenreAlt", gGenreAlt);
-                intent.putExtra("iTypeNm", gTypeNm);
-                intent.putExtra("movieCode", gMovieCd);
 
                 movieInfoParser = new MovieInfoParser(gMovieCd);
                 movieInfoParser.execute(null, null, null);
 
-                context.startActivity(intent);
+                while (true) {
+                    try {
+                        Thread.sleep(1000);
+
+                        // 멤버 변수에 담기
+                        Log.d("aslkdjasldk", String.valueOf(movieInfoParser.target));
+                        mMovieInfo = movieInfoParser.target;
+                        break;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        String gMovieNm = mMovieInfo.getShowTm();
+
+                        Intent intent = new Intent(context, InfoActivity.class);
+                        intent.putExtra("showTm", gMovieNm);
+                        intent.putExtra("movieCode", gMovieCd);
+
+                        context.startActivity(intent);
+                    }
+                }
             }
         });
     }
