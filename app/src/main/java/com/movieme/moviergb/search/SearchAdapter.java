@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.movieme.moviergb.info.InfoActivity;
+import com.movieme.moviergb.info.MovieInfoParser;
 import com.movieme.moviergb.model.Movie;
-import com.movieme.moviergb.info.MovieInfo;
 import com.movieme.moviergb.R;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
 
     Context context;
     private ArrayList<Movie> movies = null;
-    MovieInfo movieInfo;
+    MovieInfoParser movieInfoParser;
 
     public SearchAdapter(Context context, ArrayList<Movie> movies) {
         this.context = context;
@@ -62,8 +62,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
                 intent.putExtra("iTypeNm", gTypeNm);
                 intent.putExtra("movieCode", gMovieCd);
 
-                movieInfo = new MovieInfo(gMovieCd);
-                movieInfo.execute(null, null, null);
+                movieInfoParser = new MovieInfoParser(gMovieCd);
+                movieInfoParser.execute(null, null, null);
 
                 context.startActivity(intent);
             }

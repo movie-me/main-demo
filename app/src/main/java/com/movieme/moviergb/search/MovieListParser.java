@@ -19,7 +19,7 @@ import static com.movieme.moviergb.api.Kobis.getApiKey;
 import static com.movieme.moviergb.api.Kobis.getSearchMovieList;
 
 // 쓰레드를 사용하기 위해 AsyncTask를 상속받고 UI Thread와의 통신을 원활하게 도와주는 Wrapper Class 역할 담당
-public class MovieList extends AsyncTask<Void, Void, Void> {
+public class MovieListParser extends AsyncTask<Void, Void, Void> {
 
     String keyword;
     String tagName;
@@ -30,10 +30,10 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
     Movie movie;
     ArrayList<Movie> items = new ArrayList<>();
 
-    public MovieList() {
+    public MovieListParser() {
     }
 
-    public MovieList(String keyword) {
+    public MovieListParser(String keyword) {
         this.keyword = keyword;
         this.items = items;
     }
