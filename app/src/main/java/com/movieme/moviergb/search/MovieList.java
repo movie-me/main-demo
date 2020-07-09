@@ -3,7 +3,7 @@ package com.movieme.moviergb.search;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.movieme.moviergb.Movie;
+import com.movieme.moviergb.model.Movie;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -16,38 +16,26 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import static com.movieme.moviergb.api.Kobis.getApiKey;
+import static com.movieme.moviergb.api.Kobis.getSearchMovieList;
 
+// 쓰레드를 사용하기 위해 AsyncTask를 상속받고 UI Thread와의 통신을 원활하게 도와주는 Wrapper Class 역할 담당
 public class MovieList extends AsyncTask<Void, Void, Void> {
-
-    // Context Path 설정
-    private String SEARCH_MOVIE_LIST = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.xml";
 
     String keyword;
     String tagName;
 
-    // 제대로 데이터가 읽어졌는지를 판단해주는 변수
-//    boolean flag = false;
-
-    // AsyncTask는 쓰레드 관리와 UI Thread와의 통신은 원활하게 도와주는 Wrapper Class이다.
-    // 쓰레드를 쓰기위해서 AsyncTask클래스를 상속받음
-
     // 웹사이트에 연결하기 위해 url 클래스 적용
     static URL url;
-
-    // xml에서 읽어드려서 저장할 변수
-    String movieNm = "";
 
     Movie movie;
     ArrayList<Movie> items = new ArrayList<>();
 
     public MovieList() {
-
     }
 
     public MovieList(String keyword) {
         this.keyword = keyword;
         this.items = items;
-//        this.flag = flag;
     }
 
     @Override
@@ -63,7 +51,7 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
             XmlPullParser xpp = factory.newPullParser();
 
             // 웹사이트에 접속
-            url = new URL(SEARCH_MOVIE_LIST + "?key=" + getApiKey() + "&movieNm=" + keyword);
+            url = new URL(getSearchMovieList() + "?key=" + getApiKey() + "&movieNm=" + keyword);
 
             Log.d("[URL]", String.valueOf(url));
             //웹사이트를 통해서 읽어드린 xml문서를 안드로이드에 저장
@@ -82,10 +70,7 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 switch (eventType) {
                     case XmlPullParser.START_DOCUMENT:
-                        //Log.d("mytag","Start document");
-                        break;
-                    case XmlPullParser.END_DOCUMENT:
-                        //Log.d("mytag","End document");
+                        // Log.d("[MovieList][START_DOC]", "Start document");
                         break;
                     case XmlPullParser.START_TAG:
                         // 태그명 읽기
@@ -94,41 +79,41 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
                             // 영화 객체 생성
                             movie = new Movie();
                         } else if (tagName.equals("movieCd")) {
-                            eventType = xpp.next();
+                            xpp.next();
                             movie.setMovieCd(xpp.getText());
                         } else if (tagName.equals("movieNm")) {
-                            eventType = xpp.next();
+                            xpp.next();
                             movie.setMovieNm(xpp.getText());
                         } else if (tagName.equals("openDt")) {
-                            eventType = xpp.next();
+                            xpp.next();
                             movie.setOpenDt(xpp.getText());
                         } else if (tagName.equals("typeNm")) {
-                            eventType = xpp.next();
+                            xpp.next();
                             movie.setTypeNm(xpp.getText());
                         } else if (tagName.equals("nationAlt")) {
-                            eventType = xpp.next();
+                            xpp.next();
                             movie.setNationAlt(xpp.getText());
                         } else if (tagName.equals("genreAlt")) {
-                            eventType = xpp.next();
+                            xpp.next();
                             movie.setGenreAlt(xpp.getText());
                         }
                         break;
-
                     case XmlPullParser.TEXT:
                         break;
-
                     case XmlPullParser.END_TAG:
                         tagName = xpp.getName();
                         if (tagName.equals("movie")) {
                             items.add(movie);
                         }
                         break;
+                    case XmlPullParser.END_DOCUMENT:
+                        // Log.d("[MovieList][END_DOC]", "End document");
+                        break;
                 }
-
+                // 다음 단위 읽기
                 eventType = xpp.next();
             }
-            // 모든 데이터가 저장되었다면,
-//            flag = true; // true : 지정된 xml파일을 읽고 필요한 데이터를 추출해서 저장 완료된 상태
+
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {

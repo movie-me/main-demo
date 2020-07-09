@@ -1,8 +1,6 @@
-package com.movieme.moviergb;
+package com.movieme.moviergb.search;
 
 import android.view.View;
-
-import com.movieme.moviergb.search.SearchViewHolder;
 
 public interface ItemClickListener {
     void onItemClickListener(SearchViewHolder searchViewHolder, View v, int position);

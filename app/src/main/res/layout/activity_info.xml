@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="#fff"
-    tools:context=".InfoActivity">
+    tools:context=".info.InfoActivity">
 
     <TextView
         android:id="@+id/movieName"

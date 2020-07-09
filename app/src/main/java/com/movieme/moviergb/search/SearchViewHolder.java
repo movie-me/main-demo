@@ -7,7 +7,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.movieme.moviergb.ItemClickListener;
 import com.movieme.moviergb.R;
 
 public class SearchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -32,7 +31,6 @@ public class SearchViewHolder extends RecyclerView.ViewHolder implements View.On
                 // RecyclerView 아이템의 위치를 가져옴
                 int position = getAdapterPosition();
                 Log.d("[SearchViewHolder][Pos]", String.valueOf(position));
-
 
                 if (itemClickListener != null) {
                     itemClickListener.onItemClickListener(SearchViewHolder.this, v, position);
