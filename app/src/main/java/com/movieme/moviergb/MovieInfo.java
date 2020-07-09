@@ -2,7 +2,6 @@ package com.movieme.moviergb;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -14,13 +13,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import static com.movieme.moviergb.ListActivity.API_KEY;
-
-public class MovieList extends AsyncTask<Void, Void, Void> {
+public class MovieInfo extends AsyncTask<Void, Void, Void> {
 
     // Context Path 설정
     private String CONTEXT_PATH = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie";
-    private String SEARCH_MOVIE_LIST = "/searchMovieList.xml";
+    private String SEARCH_MOVIE_INFO = "/searchMovieInfo.xml";
 
     String keyword;
     String tagName;
@@ -41,11 +38,11 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
     Movie movie;
     ArrayList<Movie> items = new ArrayList<Movie>();
 
-    public MovieList() {
+    public MovieInfo() {
 
     }
 
-    public MovieList(String keyword) {
+    public MovieInfo(String code) {
         this.keyword = keyword;
         this.items = items;
         this.flag = flag;
@@ -64,7 +61,7 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
             XmlPullParser xpp = factory.newPullParser();
 
             // 웹사이트에 접속
-            url = new URL(CONTEXT_PATH + SEARCH_MOVIE_LIST + "?key=" + API_KEY + "&movieNm=" + keyword);
+            url = new URL(CONTEXT_PATH + SEARCH_MOVIE_INFO + "?key=84860e7bae0b07af4c7c7ff379be1997" + "&movieCd=" + "20124079");
 
             Log.d("[URL]", String.valueOf(url));
             //웹사이트를 통해서 읽어드린 xml문서를 안드로이드에 저장
@@ -139,5 +136,4 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
         }
         return null;
     }
-
 }
