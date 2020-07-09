@@ -1,8 +1,9 @@
-package com.movieme.moviergb;
+package com.movieme.moviergb.search;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
+
+import com.movieme.moviergb.Movie;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -14,20 +15,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import static com.movieme.moviergb.ListActivity.API_KEY;
+import static com.movieme.moviergb.api.Kobis.getApiKey;
 
 public class MovieList extends AsyncTask<Void, Void, Void> {
 
     // Context Path 설정
-    private String CONTEXT_PATH = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie";
-    private String SEARCH_MOVIE_LIST = "/searchMovieList.xml";
+    private String SEARCH_MOVIE_LIST = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.xml";
 
     String keyword;
     String tagName;
-    StringBuffer buffer = null;
 
     // 제대로 데이터가 읽어졌는지를 판단해주는 변수
-    boolean flag = false;
+//    boolean flag = false;
 
     // AsyncTask는 쓰레드 관리와 UI Thread와의 통신은 원활하게 도와주는 Wrapper Class이다.
     // 쓰레드를 쓰기위해서 AsyncTask클래스를 상속받음
@@ -48,7 +47,7 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
     public MovieList(String keyword) {
         this.keyword = keyword;
         this.items = items;
-        this.flag = flag;
+//        this.flag = flag;
     }
 
     @Override
@@ -64,7 +63,7 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
             XmlPullParser xpp = factory.newPullParser();
 
             // 웹사이트에 접속
-            url = new URL(CONTEXT_PATH + SEARCH_MOVIE_LIST + "?key=" + API_KEY + "&movieNm=" + keyword);
+            url = new URL(SEARCH_MOVIE_LIST + "?key=" + getApiKey() + "&movieNm=" + keyword);
 
             Log.d("[URL]", String.valueOf(url));
             //웹사이트를 통해서 읽어드린 xml문서를 안드로이드에 저장
@@ -129,7 +128,7 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
                 eventType = xpp.next();
             }
             // 모든 데이터가 저장되었다면,
-            flag = true; // true : 지정된 xml파일을 읽고 필요한 데이터를 추출해서 저장 완료된 상태
+//            flag = true; // true : 지정된 xml파일을 읽고 필요한 데이터를 추출해서 저장 완료된 상태
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {

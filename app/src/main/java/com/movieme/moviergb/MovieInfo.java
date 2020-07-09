@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import static com.movieme.moviergb.ListActivity.API_KEY;
+import static com.movieme.moviergb.api.Kobis.getApiKey;
 
 public class MovieInfo extends AsyncTask<Void, Void, Void> {
 
@@ -63,7 +63,7 @@ public class MovieInfo extends AsyncTask<Void, Void, Void> {
             XmlPullParser xpp = factory.newPullParser();
 
             // 웹사이트에 접속
-            url = new URL(CONTEXT_PATH + SEARCH_MOVIE_INFO + "?key=" + API_KEY + "&movieCd=" + movieCode);
+            url = new URL(CONTEXT_PATH + SEARCH_MOVIE_INFO + "?key=" + getApiKey() + "&movieCd=" + movieCode);
 
             Log.d("[URL]", String.valueOf(url));
             //웹사이트를 통해서 읽어드린 xml문서를 안드로이드에 저장

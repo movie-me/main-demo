@@ -1,4 +1,4 @@
-package com.movieme.moviergb;
+package com.movieme.moviergb.search;
 
 import android.util.Log;
 import android.view.View;
@@ -6,6 +6,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.movieme.moviergb.ItemClickListener;
+import com.movieme.moviergb.R;
 
 public class SearchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
