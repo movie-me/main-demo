@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import com.movieme.moviergb.search.ListActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
 
     // 발급받은 API 키 공유 변수 추가
 
@@ -35,12 +35,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 프로그레스 바 생성
-                progressDialog = new ProgressDialog(MainActivity.this);
+                progressDialog = new ProgressDialog(SearchActivity.this);
                 progressDialog.setMessage("영화를 검색중입니다. 잠시만 기다려주세요..");
                 progressDialog.show();
 
                 // 검색 액티비티로 전환
-                Intent intent = new Intent(MainActivity.this, ListActivity.class);
+                Intent intent = new Intent(SearchActivity.this, ListActivity.class);
 
                 // 검색 키워드 같이 전달
                 String keyword = editText.getText().toString();
