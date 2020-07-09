@@ -9,7 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.movieme.moviergb.search.ListActivity;
+
 public class MainActivity extends AppCompatActivity {
+
+    // 발급받은 API 키 공유 변수 추가
 
     // 멤버변수 설정
     EditText editText;
@@ -35,11 +39,23 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.setMessage("영화를 검색중입니다. 잠시만 기다려주세요..");
                 progressDialog.show();
 
-                String keyword = editText.getText().toString();
+                // 검색 액티비티로 전환
                 Intent intent = new Intent(MainActivity.this, ListActivity.class);
+
+                // 검색 키워드 같이 전달
+                String keyword = editText.getText().toString();
                 intent.putExtra("keyword", keyword);
                 startActivity(intent);
             }
         });
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        // 다시 검색 화면으로 돌아왔을 때 프로그레스 바가 나타나지 않도록 처리
+        progressDialog.dismiss();
+    }
+
 }
