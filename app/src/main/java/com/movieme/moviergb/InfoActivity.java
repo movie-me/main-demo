@@ -2,14 +2,17 @@ package com.movieme.moviergb;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class InfoActivity extends AppCompatActivity {
 
     TextView mMovieNameTv, mOpenDateTv, mNationTv, mGenreTv, mTypeNameTv, mMovieCodeTv, mShowTmTv, mDirectorTv, mActorTv, mCompanyTv, mAuditTv;
+    MovieInfo movieInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,8 @@ public class InfoActivity extends AppCompatActivity {
         mAuditTv = findViewById(R.id.audit);
 
         Intent intent = getIntent();
+        String movieCode = intent.getExtras().getString("movieCode");
+        Log.d("[InfoActivity][movieCd]", movieCode);
 
         String mMovieName = intent.getStringExtra("iMovieNm");
         String mOpenDate = intent.getStringExtra("iOpenDt");

@@ -39,7 +39,7 @@ public class MovieList extends AsyncTask<Void, Void, Void> {
     String movieNm = "";
 
     Movie movie;
-    ArrayList<Movie> items = new ArrayList<Movie>();
+    ArrayList<Movie> items = new ArrayList<>();
 
     public MovieList() {
 

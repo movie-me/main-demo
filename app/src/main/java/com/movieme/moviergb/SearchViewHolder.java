@@ -21,15 +21,31 @@ public class SearchViewHolder extends RecyclerView.ViewHolder implements View.On
         this.mgenreAlt = itemView.findViewById(R.id.genreAlt);
         this.mtypeNm = itemView.findViewById(R.id.typeNm);
         this.mmovieCd = itemView.findViewById(R.id.movieCd);
+
+        // 영화 목록 중 한 row 클릭 시 상세 영화 정보 화면으로 이동하는 이벤트
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // RecyclerView 아이템의 위치를 가져옴
+                int position = getAdapterPosition();
+                Log.d("[SearchViewHolder][Pos]", String.valueOf(position));
+
+
+                if (itemClickListener != null) {
+                    itemClickListener.onItemClickListener(SearchViewHolder.this, v, position);
+                }
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
-        Log.d("asdkljaslkdjasldk", String.valueOf(getAdapterPosition()));
-        this.itemClickListener.onItemClickListener(view, getLayoutPosition());
+        this.itemClickListener.onItemClickListener(SearchViewHolder.this, view, getLayoutPosition());
     }
 
+    // 아이템 클릭 이벤트 리스너 설정
     public void setItemClickListener(ItemClickListener ic) {
         this.itemClickListener = ic;
     }
+
 }
