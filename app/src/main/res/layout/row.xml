@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/movieNm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="movieNm"
+            android:textColor="#000"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/openDt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/movieNm"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="openDt"
+            android:textColor="#a9a9a9"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/nationAlt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movieNm"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/openDt"
+            android:layout_toRightOf="@+id/openDt"
+            android:text="nationAlt"
+            android:textColor="#a9a9a9"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/genreAlt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/movieNm"
+            android:text="genreAlt"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/typeNm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/genreAlt"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/movieNm"
+            android:text="typeNm"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/movieCd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movieNm"
+            android:layout_marginLeft="60dp"
+            android:layout_toEndOf="@+id/nationAlt"
+            android:layout_toRightOf="@+id/nationAlt"
+            android:text="movieCd"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
