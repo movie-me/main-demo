@@ -9,12 +9,11 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.movieme.moviergb.R;
-import com.movieme.moviergb.info.MovieInfo;
 
 public class InfoActivity extends AppCompatActivity {
 
     TextView mMovieNameTv, mOpenDateTv, mNationTv, mGenreTv, mTypeNameTv, mMovieCodeTv, mShowTmTv, mDirectorTv, mActorTv, mCompanyTv, mAuditTv;
-    MovieInfo movieInfo;
+    MovieInfoParser movieInfoParser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

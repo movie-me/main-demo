@@ -19,7 +19,7 @@ public class ListActivity extends AppCompatActivity {
     SearchAdapter mAdapter;
     ArrayList<Movie> mMovies;
 
-    MovieList movieList;
+    MovieListParser movieListParser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +31,19 @@ public class ListActivity extends AppCompatActivity {
         String keyword = intent.getExtras().getString("keyword");
 
         // 영화 목록 담을 클래스 추가
-        movieList = new MovieList(keyword);
+        movieListParser = new MovieListParser(keyword);
 
         // AsyncTask 실행
         // execute() 메서드에 의해 가장 먼저 호출되는 메서드가 onPreExecute()이고
         // 다음으로 자동으로 호출되는 메서드가 doInBackground()
-        movieList.execute(null, null, null);
+        movieListParser.execute(null, null, null);
 
         while (true) {
             try {
                 Thread.sleep(1000);
 
                 // 멤버 변수에 담기
-                mMovies = movieList.items;
+                mMovies = movieListParser.items;
                 break;
             } catch (Exception e) {
                 e.printStackTrace();

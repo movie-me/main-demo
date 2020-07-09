@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import static com.movieme.moviergb.api.Kobis.getApiKey;
 import static com.movieme.moviergb.api.Kobis.getSearchMovieInfo;
 
-public class MovieInfo extends AsyncTask<Void, Void, Void> {
+public class MovieInfoParser extends AsyncTask<Void, Void, Void> {
 
     String movieCode = null;
     String tagName;
@@ -37,11 +37,11 @@ public class MovieInfo extends AsyncTask<Void, Void, Void> {
     com.movieme.moviergb.model.MovieInfo movieInfo;
     ArrayList<com.movieme.moviergb.model.MovieInfo> items = new ArrayList<>();
 
-    public MovieInfo() {
+    // 생성자
+    public MovieInfoParser() {
 
     }
-
-    public MovieInfo(String movieCode) {
+    public MovieInfoParser(String movieCode) {
         this.movieCode = movieCode;
         this.items = items;
         this.flag = flag;
@@ -91,7 +91,7 @@ public class MovieInfo extends AsyncTask<Void, Void, Void> {
                             // 영화 객체 생성
                             movieInfo = new com.movieme.moviergb.model.MovieInfo();
                         } else if (tagName.equals("movieCd")) {
-                            eventType = xpp.next();
+                            xpp.next();
 //                            movieDetail.setMovieCd(xpp.getText());
                         } else if (tagName.equals("movieNm")) {
                             eventType = xpp.next();
