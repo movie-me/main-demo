@@ -1,6 +1,6 @@
 package com.movieme.moviergb;
 
-public class Model {
+public class Movie {
 
     private String movieNm, openDt, nationAlt, genreAlt, typeNm, movieCd;
 

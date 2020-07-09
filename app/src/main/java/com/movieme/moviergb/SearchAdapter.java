@@ -13,11 +13,11 @@ import java.util.ArrayList;
 public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
 
     Context context;
-    ArrayList<Model> models;
+    private ArrayList<Movie> movies = null;
 
-    public SearchAdapter(Context context, ArrayList<Model> models) {
+    public SearchAdapter(Context context, ArrayList<Movie> list) {
         this.context = context;
-        this.models = models;
+        this.movies = list;
     }
 
     @NonNull
@@ -30,16 +30,16 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
-        holder.mmovieNm.setText(models.get(position).getMovieNm());
-        holder.mopenDt.setText(models.get(position).getOpenDt());
-        holder.mnationAlt.setText(models.get(position).getNationAlt());
-        holder.mgenreAlt.setText(models.get(position).getGenreAlt());
-        holder.mtypeNm.setText(models.get(position).getTypeNm());
-        holder.mmovieCd.setText(models.get(position).getMovieCd());
+        holder.mmovieNm.setText(movies.get(position).getMovieNm());
+        holder.mopenDt.setText(movies.get(position).getOpenDt());
+        holder.mnationAlt.setText(movies.get(position).getNationAlt());
+        holder.mgenreAlt.setText(movies.get(position).getGenreAlt());
+        holder.mtypeNm.setText(movies.get(position).getTypeNm());
+        holder.mmovieCd.setText(movies.get(position).getMovieCd());
     }
 
     @Override
     public int getItemCount() {
-        return models.size();
+        return movies.size();
     }
 }
