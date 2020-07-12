@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="#fff"
+    android:padding="16dp"
     tools:context=".info.InfoActivity">
 
     <TextView
@@ -34,10 +33,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/typeName"
+        android:layout_marginLeft="10dp"
         android:layout_toEndOf="@+id/openDate"
         android:layout_toRightOf="@+id/openDate"
         android:text="nation"
-        android:layout_marginLeft="10dp"
         android:textColor="#a9a9a9"
         android:textSize="20sp" />
 
@@ -75,115 +74,83 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/openDate"
-        android:textColor="#000"
-        android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:text="상영시간: "/>
+        android:text="상영시간: "
+        android:textColor="#000"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/showTm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/showTmInfo"
         android:layout_below="@id/openDate"
         android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/showTmInfo"
+        android:text="showTm"
         android:textColor="#000"
-        android:textSize="20sp"
-        android:text="showTm"/>
+        android:textSize="20sp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/showTm"
         android:layout_below="@+id/openDate"
         android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/showTm"
+        android:text="분"
         android:textColor="#000"
-        android:textSize="20sp"
-        android:text="분"/>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/directorInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/showTmInfo"
-        android:textColor="#000"
-        android:textSize="20sp"
         android:layout_marginTop="10dp"
-        android:text="감독: "/>
+        android:text="감독: "
+        android:textColor="#000"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/director"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/directorInfo"
         android:layout_below="@id/showTmInfo"
         android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/directorInfo"
+        android:text="Director"
         android:textColor="#000"
-        android:textSize="20sp"
-        android:text="Director"/>
+        android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/actorInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/director"
-        android:textColor="#000"
-        android:textSize="20sp"
-        android:layout_marginTop="10dp"
-        android:text="배우: "/>
-
-    <TextView
-        android:id="@+id/actor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/actorInfo"
-        android:layout_below="@id/director"
-        android:layout_marginTop="10dp"
-        android:textColor="#000"
-        android:textSize="20sp"
-        android:text="Actor"/>
 
     <TextView
         android:id="@+id/companyInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/actor"
-        android:textColor="#000"
-        android:textSize="20sp"
+        android:layout_below="@id/director"
         android:layout_marginTop="10dp"
-        android:text="영화 공급 회사: "/>
+        android:text="영화 공급 회사: "
+        android:textColor="#000"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/company"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/companyInfo"
-        android:layout_below="@id/actor"
+        android:layout_below="@id/director"
         android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/companyInfo"
+        android:text="Company"
         android:textColor="#000"
-        android:textSize="20sp"
-        android:text="Company"/>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/audit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/company"
-        android:textColor="#000"
-        android:textSize="20sp"
         android:layout_marginTop="10dp"
-        android:text="audits"/>
-
-    <TextView
-        android:id="@+id/auditInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/audit"
-        android:layout_below="@id/company"
-        android:layout_marginTop="10dp"
+        android:text="audits"
         android:textColor="#000"
-        android:textSize="20sp"
-        android:text="세 이용관람가"/>
-
-
+        android:textSize="20sp" />
 
 </RelativeLayout>

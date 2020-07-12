@@ -60,16 +60,31 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
                         Thread.sleep(1000);
 
                         // 멤버 변수에 담기
-                        Log.d("aslkdjasldk", String.valueOf(movieInfoParser.target));
                         mMovieInfo = movieInfoParser.target;
                         break;
                     } catch (Exception e) {
                         e.printStackTrace();
                     } finally {
-                        String gMovieNm = mMovieInfo.getShowTm();
+                        String gMovieNm = mMovieInfo.getMovieName();
+                        String gOpenDt = mMovieInfo.getOpenDate();
+                        String gNationAlt = mMovieInfo.getNation();
+                        String gGenreAlt = mMovieInfo.getGenre();
+                        String gTypeNm = mMovieInfo.getTypeName();
+                        String gShowTm = mMovieInfo.getShowTm();
+                        String gDirector = mMovieInfo.getDirector();
+                        String gCompany = mMovieInfo.getCompany();
+                        String gAudit = mMovieInfo.getAudit();
 
                         Intent intent = new Intent(context, InfoActivity.class);
-                        intent.putExtra("showTm", gMovieNm);
+                        intent.putExtra("movieName", gMovieNm);
+                        intent.putExtra("openDate", gOpenDt);
+                        intent.putExtra("nation", gNationAlt);
+                        intent.putExtra("genre", gGenreAlt);
+                        intent.putExtra("typeNm", gTypeNm);
+                        intent.putExtra("showTm", gShowTm);
+                        intent.putExtra("director", gDirector);
+                        intent.putExtra("company", gCompany);
+                        intent.putExtra("audit", gAudit);
                         intent.putExtra("movieCode", gMovieCd);
 
                         context.startActivity(intent);

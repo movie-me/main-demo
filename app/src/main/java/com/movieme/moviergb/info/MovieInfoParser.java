@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
 import static com.movieme.moviergb.api.Kobis.getApiKey;
 import static com.movieme.moviergb.api.Kobis.getSearchMovieInfo;
@@ -30,12 +29,10 @@ public class MovieInfoParser extends AsyncTask<Void, Void, Void> {
     // 웹사이트에 연결하기 위해 url 클래스 적용
     static URL url;
 
-
     // 생성자
     public MovieInfoParser() {
 
     }
-
     public MovieInfoParser(String movieCode) {
         this.movieCode = movieCode;
     }
@@ -61,6 +58,7 @@ public class MovieInfoParser extends AsyncTask<Void, Void, Void> {
 
             // XML 문서를 읽고 파싱하는 객체에 넘겨주면서 인코딩 UTF-8 지정
             xpp.setInput(in, "UTF-8");
+            int directorCount = 0;
 
             // 이벤트 타입을 얻어옴
             int eventType = xpp.getEventType();
@@ -74,24 +72,38 @@ public class MovieInfoParser extends AsyncTask<Void, Void, Void> {
                     case XmlPullParser.START_TAG:
                         // 태그명 읽기
                         tagName = xpp.getName();
+                        Log.d("[MovieInfoParser]", String.valueOf(xpp.getName()));
                         if (tagName.equals("movieInfo")) {
                             // 영화상세정보 객체 생성
                             movieInfo = new MovieInfo();
                         } else if (tagName.equals("showTm")) {
                             xpp.next();
                             movieInfo.setShowTm(xpp.getText());
-                        } else if (tagName.equals("director")) {
+                        } else if (tagName.equals("peopleNm") && directorCount == 0) {
                             xpp.next();
                             movieInfo.setDirector(xpp.getText());
-                        } else if (tagName.equals("actors")) {
-                            xpp.next();
-                            movieInfo.setActor(xpp.getText());
-                        } else if (tagName.equals("company")) {
+                            directorCount++;
+                        } else if (tagName.equals("companyNm")) {
                             xpp.next();
                             movieInfo.setCompany(xpp.getText());
-                        } else if (tagName.equals("audit")) {
+                        } else if (tagName.equals("watchGradeNm")) {
                             xpp.next();
                             movieInfo.setAudit(xpp.getText());
+                        } else if (tagName.equals("movieNm")) {
+                            xpp.next();
+                            movieInfo.setMovieName(xpp.getText());
+                        } else if (tagName.equals("openDt")) {
+                            xpp.next();
+                            movieInfo.setOpenDate(xpp.getText());
+                        } else if (tagName.equals("nationNm")) {
+                            xpp.next();
+                            movieInfo.setNation(xpp.getText());
+                        } else if (tagName.equals("genreNm")) {
+                            xpp.next();
+                            movieInfo.setGenre(xpp.getText());
+                        } else if (tagName.equals("typeNm")) {
+                            xpp.next();
+                            movieInfo.setTypeName(xpp.getText());
                         }
                         break;
 
