@@ -3,6 +3,7 @@ package com.movieme.moviergb.api;
 // KOBIS(영화진흥위원회)
 public class Kobis {
 
+    // 발급받은 API 키 공유 변수 추가
     private static final String API_KEY = "84860e7bae0b07af4c7c7ff379be1997";
 
     // 기본 Context Path 설정

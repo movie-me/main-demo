@@ -20,7 +20,7 @@
             android:layout_marginLeft="10dp"
             android:text="movieNm"
             android:textColor="#000"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_marginLeft="10dp"
             android:text="openDt"
             android:textColor="#a9a9a9"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/nationAlt"
@@ -44,7 +44,7 @@
             android:layout_toRightOf="@+id/openDt"
             android:text="nationAlt"
             android:textColor="#a9a9a9"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/genreAlt"

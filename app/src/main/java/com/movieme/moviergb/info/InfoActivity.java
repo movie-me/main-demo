@@ -13,7 +13,6 @@ import com.movieme.moviergb.R;
 public class InfoActivity extends AppCompatActivity {
 
     TextView mMovieNameTv, mOpenDateTv, mNationTv, mGenreTv, mTypeNameTv, mMovieCodeTv, mShowTmTv, mDirectorTv, mActorTv, mCompanyTv, mAuditTv;
-    MovieInfoParser movieInfoParser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,6 @@ public class InfoActivity extends AppCompatActivity {
         mMovieCodeTv = findViewById(R.id.movieCode);
         mShowTmTv = findViewById(R.id.showTm);
         mDirectorTv = findViewById(R.id.director);
-        mActorTv = findViewById(R.id.actor);
         mCompanyTv = findViewById(R.id.company);
         mAuditTv = findViewById(R.id.audit);
 
@@ -38,31 +36,38 @@ public class InfoActivity extends AppCompatActivity {
         String movieCode = intent.getExtras().getString("movieCode");
         Log.d("[InfoActivity][movieCd]", movieCode);
 
+        String mMovieName = intent.getStringExtra("movieName");
+        String mOpenDate = intent.getStringExtra("openDate");
+        String mNation = intent.getStringExtra("nation");
+        String mGenre = intent.getStringExtra("genre");
+        String mTypeName = intent.getStringExtra("typeName");
+        // String mMovieCode = intent.getStringExtra("iMovieCd");
         String showTm = intent.getStringExtra("showTm");
-//        String mOpenDate = intent.getStringExtra("iOpenDt");
-//        String mNation = intent.getStringExtra("iNationAlt");
-//        String mGenre = intent.getStringExtra("iGenreAlt");
-//        String mTypeName = intent.getStringExtra("iTypeNm");
-        String mMovieCode = intent.getStringExtra("iMovieCd");
+        String director = intent.getStringExtra("director");
+        String company = intent.getStringExtra("company");
+        String audit = intent.getStringExtra("audit");
 
         Log.d("[InfoActivity][showTm]", showTm);
 
-        actionBar.setTitle(showTm);
+        actionBar.setTitle(mMovieName);
 
-        mMovieNameTv.setText(showTm);
-//        mOpenDateTv.setText(mOpenDate);
-//        mNationTv.setText(mNation);
-//        mGenreTv.setText(mGenre);
-//        mTypeNameTv.setText(mTypeName);
-//        mMovieCodeTv.setText(mMovieCode);
+        mMovieNameTv.setText(mMovieName);
+        mOpenDateTv.setText(mOpenDate);
+        mNationTv.setText(mNation);
+        mGenreTv.setText(mGenre);
+        mTypeNameTv.setText(mTypeName);
+        // mMovieCodeTv.setText(mMovieCode);
+        mShowTmTv.setText(showTm);
+        mDirectorTv.setText(director);
+        mCompanyTv.setText(company);
+        mAuditTv.setText(audit);
 
-        //주석 처리한 부분으로 InfoActivity 내용 수정 가능
-        //mShowTmTv.setText("180");
-        //mDirectorTv.setText("크리스토퍼 놀란");
-        //mActorTv.setText("로버트 다우니 주니어");
-        //mCompanyTv.setText("CJ");
-        //mAuditTv.setText("15");
-
+        // 주석 처리한 부분으로 InfoActivity 내용 수정 가능
+        // mShowTmTv.setText("180");
+        // mDirectorTv.setText("크리스토퍼 놀란");
+        // mActorTv.setText("로버트 다우니 주니어");
+        // mCompanyTv.setText("CJ");
+        // mAuditTv.setText("15");
     }
 
 }

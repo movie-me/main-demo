@@ -2,7 +2,47 @@ package com.movieme.moviergb.model;
 
 public class MovieInfo {
 
-    private String showTm, director, actor, company, audit;
+    private String movieName, openDate, nation, genre, typeName, showTm, director, company, audit;
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
+    public String getOpenDate() {
+        return openDate;
+    }
+
+    public void setOpenDate(String openDate) {
+        this.openDate = openDate;
+    }
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
 
     public String getShowTm() {
         return showTm;
@@ -18,14 +58,6 @@ public class MovieInfo {
 
     public void setDirector(String director) {
         this.director = director;
-    }
-
-    public String getActor() {
-        return actor;
-    }
-
-    public void setActor(String actor) {
-        this.actor = actor;
     }
 
     public String getCompany() {

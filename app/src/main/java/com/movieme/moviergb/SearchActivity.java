@@ -13,8 +13,6 @@ import com.movieme.moviergb.search.ListActivity;
 
 public class SearchActivity extends AppCompatActivity {
 
-    // 발급받은 API 키 공유 변수 추가
-
     // 멤버변수 설정
     EditText editText;
     Button button;
